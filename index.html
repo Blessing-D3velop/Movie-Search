@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Seacher</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/home-section.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/search-section.css">
+
+    <!-- Google Fonts: Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="left-section">
+          <img src="Images & Icons/icons/icons8-movie-64.png" alt="movie icon">
+          <h1>Junior Search</h1>
+        </div>
+
+        <div class="right-section">
+          <nav class="navigation-bar js-navigation-bar" >
+            <p class="home">Home</p>
+            <p class="movies">Movies</p>
+            <p class="tv-shows">TV Shows</p>
+            <p class="my-list">My List</p>
+          </nav>
+        </div>
+        <div class="hamburger js-hamburger">&#9776;</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="home-section">
+        <div class="movie-container">
+          <img src="Images & Icons/images/radar.inception.warnerbrospictures.jpg" alt="home-movie-image" class="home-image">
+        </div>
+
+        <div class="home-section-movie-info-container">
+
+          <span class="featured-movie-span">Featured Movie</span>
+          <h2>Inception</h2>
+          <div class="rating-year-container">
+            <img src="Images & Icons/icons/icons8-star-48.png" alt="star-icon" class="star">
+            <p class="rating-number">8.8</p>   
+            <p class="bullet">&#183</p>    
+            <p class="year">2010</p>   
+          </div>
+          <div class="movie-descritpion-container">
+            <p class="movie-descritpion">
+              A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O. A mind-bending thriller that will keep you on the edge of your seat.
+            </p>
+            <div class="buttons-container">
+              <button class="watch-button js-watch-button">
+                <img src="Images & Icons/icons/icons8-play-30.png" alt="play icon" class="play-icon js-play">
+                Watch now
+              </button>
+              <button class="more-info-button">
+                More Info
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <section class="seaech-section">
+        <div class="search-section-container">
+          <input type="text" placeholder="Seach for moives..." class="search-input js-search-input">
+          <button class="search-button">Search</button>
+          <button class="sort-button">&#8645;</button>
+        </div>
+      </section>
+    </main>
+    <script src="scripts/header.js"></script>
+    <script src="scripts/home.js"></script>
+  </body>
+</html>

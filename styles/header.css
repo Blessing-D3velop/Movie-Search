@@ -1,0 +1,85 @@
+/* Header container */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  position: relative; 
+  background-color: #0b0f1a;
+  border-bottom: 1px solid rgb(66, 66, 66);
+}
+
+/* Left section: logo + title */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo image */
+.left-section img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Gradient title like your portfolio */
+h1 {
+  background: linear-gradient(-45deg, #641977, #b40ab1, #805286, #056af8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Right section nav links */
+nav.navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: gainsboro;
+  font-size: 18px;
+}
+
+/* Hover effects */
+nav p:hover {
+  color: rgb(197, 13, 13);
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s, color 0.3s;
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+  padding: 0 10px;
+  border-radius: 15px;
+}
+.hamburger:hover{
+  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 800px) {
+  nav.navigation-bar {
+    display: none; /* hidden initially */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color: rgba(10, 15, 25, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    gap: 5px;
+    z-index: 999; /* make sure it’s above other content */
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
