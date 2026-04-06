@@ -1,0 +1,37 @@
+.movie-search-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+  color: white;
+}
+
+.movie-icon-two{
+  width: 120px;
+}
+
+.discover-text{
+  font-weight: 500;
+  font-size: 30px;
+}
+.search-label{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  color: rgb(179, 182, 235);
+}
+
+.text{
+color: rgb(179, 182, 235)
+}
+
+.no-movie-text{
+color: rgb(179, 182, 235)
+}
+
+.movie-search-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+}

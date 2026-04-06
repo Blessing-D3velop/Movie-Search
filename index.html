@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles/home-section.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/search-section.css">
+    <link rel="stylesheet" href="styles/movies.css">
+    <link rel="stylesheet" href="styles/footer.css">
 
     <!-- Google Fonts: Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +35,10 @@
       </div>
     </header>
 
-    <main>
+
+    <main> 
+
+      <!--home-section-->
       <section class="home-section">
         <div class="movie-container">
           <img src="Images & Icons/images/radar.inception.warnerbrospictures.jpg" alt="home-movie-image" class="home-image">
@@ -66,15 +71,46 @@
 
         </div>
       </section>
-      <section class="seaech-section">
+
+      <!--search-section-->
+      <section class="search-section">
         <div class="search-section-container">
           <input type="text" placeholder="Seach for moives..." class="search-input js-search-input">
-          <button class="search-button">Search</button>
+          <button class="search-button js-search-button">Search</button>
           <button class="sort-button">&#8645;</button>
         </div>
       </section>
+
+      <!--movie-section-->
+      <section class="movie-section">
+        <div class="movie-search-container js-movie-search-container">
+          <div>
+            <img src="Images & Icons/icons/icons8-movie-64.png" alt="movie icon" class="movie-icon-two">
+          </div>
+          <p class="discover-text">Discover Your Next Favorite Movie</p>
+          <p class="text">
+            Use the search bar above to find movies by title, actor, or genre. Get detailed information, ratings, and more.
+          </p>
+          <p class="search-label">
+            <img src="Images & Icons/icons/icons8-search-24.png" alt="search-icon">
+            Try searching for "Inception" or "The Matrix"
+          </p>
+        </div>
+      </section>
+
     </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">© 2026 Junior Search</div>
+        <div class="Privacy-container">
+          <p>Privacy Policy</p>
+          <p>Terms of Service</p>
+        </div>
+      </div>
+    </footer>
     <script src="scripts/header.js"></script>
     <script src="scripts/home.js"></script>
+    <script src="scripts/movie.js"></script>
   </body>
 </html>
