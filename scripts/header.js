@@ -42,3 +42,9 @@ document.addEventListener('click', (e) => {
 window.addEventListener('resize', () => {
   navBar.removeAttribute('style'); 
 });
+
+document.querySelector('.js-my-list')
+  .addEventListener('click', () => {
+    window.location.href = 'my-list.html';
+});
+
