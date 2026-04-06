@@ -1,10 +1,12 @@
 const hamburger = document.querySelector('.hamburger');
 const navBar = document.querySelector('.js-navigation-bar');
-const body = document.querySelector('body');
 
-// Toggle menu
+// Helper function to check if hamburger is visible
+const isHamburgerVisible = () => window.getComputedStyle(hamburger).display !== 'none';
+
+// Toggle menu when hamburger is clicked
 hamburger.addEventListener('click', (e) => {
-  e.stopPropagation();
+  e.stopPropagation(); // prevent body click from firing immediately
 
   if (navBar.style.display === 'flex') {
     navBar.style.display = 'none';
@@ -21,13 +23,22 @@ hamburger.addEventListener('click', (e) => {
   }
 });
 
+// Close menu when a nav item is clicked (only if hamburger is visible)
+const navItems = navBar.querySelectorAll('p');
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    if (isHamburgerVisible()) navBar.style.display = 'none';
+  });
+});
+
+// Close menu when clicking anywhere outside (only if hamburger is visible)
+document.addEventListener('click', (e) => {
+  if (isHamburgerVisible() && !navBar.contains(e.target) && !hamburger.contains(e.target)) {
+    navBar.style.display = 'none';
+  }
+});
 
 // Reset inline styles on resize
 window.addEventListener('resize', () => {
   navBar.removeAttribute('style'); 
 });
-
-document.querySelector('.js-my-list')
-  .addEventListener('click', () => {
-    window.open('my-list.html', '_blank', 'noopener,noreferrer');
-  });

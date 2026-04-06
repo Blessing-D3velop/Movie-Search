@@ -91,6 +91,10 @@ const handleSearch = () => {
   fetchMovie();
   emptyStateID.scrollIntoView({ behavior: 'smooth' });
 }
+document.querySelector('.js-search-input')  
+  .addEventListener('click', () =>{
+    fetchMovie();
+  });
 
 document.querySelector('.js-search-button')
   .addEventListener('click', handleSearch);
