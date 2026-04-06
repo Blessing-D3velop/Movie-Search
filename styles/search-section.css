@@ -49,3 +49,14 @@
 .sort-button:hover{
   transform: scale(1.05);
 }
+
+/* Keep your original CSS untouched, just add: */
+.search-section-container {
+  position: relative; /* ensures clicks on children work */
+  z-index: 10;        /* brings input/button above other content */
+}
+
+.search-button,
+.search-input {
+  z-index: 11;         /* ensures they are clickable above other elements */
+}
