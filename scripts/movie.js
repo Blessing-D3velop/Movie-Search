@@ -1,7 +1,9 @@
 async function fetchMovie(){
   const searchInput = document.querySelector('.js-search-input');
   const movieContainer = document.querySelector('.js-movie-search-container');
+  const emptyState = document.querySelector('.js-empty-state');
   movieContainer.innerHTML = '';
+  emptyState.innerHTML = '';
 
   const searchMovie = searchInput.value.toLowerCase().trim();
 
@@ -17,6 +19,7 @@ async function fetchMovie(){
 
     if (data.Response === "False") {
       movieContainer.innerHTML = `<p class="no-movie-text">No movies found for "${searchMovie}"!</p>`;
+      emptyState.innerHTML = '';
       return;
     }
     data.Search.forEach((movie) =>{
@@ -25,12 +28,12 @@ async function fetchMovie(){
       
 
       movieCard.innerHTML = `
-        <img src="${movie.Poster !== "N/A" ? movie.Poster : 'Images & Icons/icons/icons8-movie-64.png'}" alt="${movie.Title}">
+        <img src="${movie.Poster !== "N/A" ? movie.Poster : 'Images & Icons/icons/icons8-movie-64.png'}" alt="${movie.Title}" class="movie-image">
         <p class="movie-title">${movie.Title}</p>
         <p class="movie-year">${movie.Year}</p>
       `;
 
-      movieContainer.appendChild(movieCard)
+      emptyState.appendChild(movieCard)
     })
 
 
@@ -40,8 +43,20 @@ async function fetchMovie(){
     movieContainer.innerHTML = `<p>Failed to fetch movies. Try again later.</p>`;
   }
 };
+const emptyStateID = document.getElementById('js-empty-state-id');
+
+const handleSearch = () => {
+  fetchMovie();
+  emptyStateID.scrollIntoView({ behavior: 'smooth' });
+}
+
 
 document.querySelector('.js-search-button')
-  .addEventListener('click', () =>{
-    fetchMovie();
-  })
+  .addEventListener('click', handleSearch);
+
+document.querySelector('.js-search-input')
+  .addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  });

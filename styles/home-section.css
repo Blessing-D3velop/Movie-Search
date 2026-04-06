@@ -1,99 +1,96 @@
-/* Make sure box-sizing includes padding and border in width/height calculations */
+/* GLOBAL */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Main hero container */
+/* HERO SECTION */
 .movie-container {
+  position: relative; /* IMPORTANT for absolute children */
   min-height: 700px;
   height: 100vh;
   width: 100%;
-  padding:  20px 30px; /* 30px left & right padding */
+  padding: 20px 30px;
   overflow: hidden;
   display: flex;
 }
 
-/* Hero image inside the container */
 .home-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px; /* optional rounded corners */
+  border-radius: 10px;
   transition: transform 0.5s ease;
-  display: block; /* ensures no inline spacing issues */
+  display: block;
 }
-
-
 
 .home-image:hover {
   transform: scale(1.05);
 }
 
-@media (max-width: 800px) {
-  .movie-container {
-    height: 88vh; 
-    padding: 0 15px; 
-  }
-  .movie-container::after {
-    left: 15px;
-    width: calc(100% - 30px);
-  }
-}
-.home-section-movie-info-container{
+/* INFO TEXT */
+.home-section-movie-info-container {
   position: absolute;
   top: 40%;
   left: 5%;
   width: 400px;
 }
+
 .featured-movie-span {
-  display: inline-block;       
-  color: white;                 
-  background-color: rgb(197, 13, 13); 
-  border-radius: 5px;         
-  padding: 5px 12px;          
-  font-weight: 500;          
-  font-size: 20px;            
-  border: 1px solid rgba(197, 13, 13, 0.8); 
-  text-transform: uppercase;  
-  margin-bottom: 15px;  
+  display: inline-block;
+  color: white;
+  background-color: rgb(197, 13, 13);
+  border-radius: 5px;
+  padding: 5px 12px;
+  font-weight: 500;
+  font-size: 20px;
+  border: 1px solid rgba(197, 13, 13, 0.8);
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
-h2{
+
+h2 {
   color: white;
   font-size: 65px;
-  margin-top: -1px;
-  margin-bottom: -20px;
+  margin-top: 0;
+  margin-bottom: -10px;
 }
-.rating-year-container{
+
+.rating-year-container {
   color: aliceblue;
   display: flex;
   align-items: center;
   gap: 15px;
 }
-.star{
-  width: 6%;
-}
-.bullet{
-  font-size: 35px;
+
+.star {
+  width: 20px;
 }
 
-.movie-descritpion-container{
-  color: rgb(255, 255, 255);
+.bullet {
+  font-size: 25px;
+}
+
+.movie-descritpion-container {
+  color: white;
   line-height: 1.4;
   font-size: 17px;
-  margin-top: -40px;
+  margin-top: 10px;
 }
-.buttons-container{
+
+/* BUTTONS */
+.buttons-container {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-.watch-button{
+
+.watch-button {
   display: flex;
   background-color: red;
   border: none;
-  padding: 10px;
+  padding: 10px 15px;
   color: white;
   align-items: center;
   gap: 10px;
@@ -103,29 +100,49 @@ h2{
   cursor: pointer;
   transition: transform 0.3s;
 }
-.watch-button:hover{
-  transform : scale(1.05)
+
+.watch-button:hover {
+  transform: scale(1.05);
 }
+
 .more-info-button {
-  color: white; 
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark background */
-  border: none; 
-  border-radius: 10px; 
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
   transition: transform 0.3s, background-color 0.3s;
 }
 
 .more-info-button:hover {
   transform: scale(1.05);
-  background-color: rgba(0, 0, 0, 0.7); /* darker on hover */
-}
-.play-icon{
- width: 22px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
+.play-icon {
+  width: 22px;
+}
+
+/* SEARCH SECTION (FIXED WRAP) */
+.search-section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* ✅ FIX */
+  padding: 20px;
+}
+
+.search-input {
+  min-width: 200px;
+  max-width: 500px;
+  flex: 1;
+}
+
+/* TABLET */
 @media (max-width: 1024px) {
   h2 {
     font-size: 50px;
@@ -133,13 +150,15 @@ h2{
 
   .home-section-movie-info-container {
     width: 350px;
-    top: 28%;
+    top: 30%;
   }
 
   .movie-descritpion-container {
     font-size: 15px;
   }
 }
+
+/* SMALL TABLET */
 @media (max-width: 800px) {
   .movie-container {
     height: 85vh;
@@ -165,292 +184,95 @@ h2{
   }
 
   .star {
-    width: 10%;
+    width: 18px;
   }
 }
-@media (max-width: 600px) {
+
+/* MOBILE (MAIN FIX 🔥) */
+@media (max-width: 500px) {
+
   .movie-container {
     height: 75vh;
   }
 
   h2 {
-    font-size: 30px;
+    font-size: 26px;
   }
 
   .home-section-movie-info-container {
     width: 90%;
     left: 5%;
-    top: 20%;
+    top: 18%;
+    padding: 0 10px;
   }
 
   .buttons-container {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: stretch;
+    gap: 8px;
+    padding: 0 10px;
   }
 
   .watch-button,
   .more-info-button {
     width: 100%;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+  .watch-button{
     justify-content: center;
+  }
+
+  .play-icon {
+    width: 18px;
   }
 
   .movie-descritpion-container {
     font-size: 13px;
-    margin-top: -20px;
+    color: rgb(87, 56, 56);
+  }
+
+  /* SEARCH MOBILE */
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button,
+  .sort-button {
+    width: 100%;
   }
 }
+
+/* EXTRA SMALL */
 @media (max-width: 400px) {
-  h2 {
-    font-size: 24px;
-  }
-
-  .featured-movie-span {
-    font-size: 14px;
-  }
-
-  .movie-descritpion-container {
-    font-size: 12px;
-  }
-
-  .rating-year-container {
-    gap: 8px;
-    font-size: 12px;
-  }
-
-  .bullet {
-    font-size: 20px;
-  }
-}
-/* Make sure box-sizing includes padding and border in width/height calculations */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Main hero container */
-.movie-container {
-  min-height: 700px;
-  height: 100vh;
-  width: 100%;
-  padding:  20px 30px; /* 30px left & right padding */
-  overflow: hidden;
-  display: flex;
-}
-
-/* Hero image inside the container */
-.home-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px; /* optional rounded corners */
-  transition: transform 0.5s ease;
-  display: block; /* ensures no inline spacing issues */
-}
-
-
-
-.home-image:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 800px) {
-  .movie-container {
-    height: 88vh; 
-    padding: 0 15px; 
-  }
-  .movie-container::after {
-    left: 15px;
-    width: calc(100% - 30px);
-  }
-}
-.home-section-movie-info-container{
-  position: absolute;
-  top: 40%;
-  left: 5%;
-  width: 400px;
-}
-.featured-movie-span {
-  display: inline-block;       
-  color: white;                 
-  background-color: rgb(197, 13, 13); 
-  border-radius: 5px;         
-  padding: 5px 12px;          
-  font-weight: 500;          
-  font-size: 20px;            
-  border: 1px solid rgba(197, 13, 13, 0.8); 
-  text-transform: uppercase;  
-  margin-bottom: 15px;  
-}
-h2{
-  color: white;
-  font-size: 65px;
-  margin-top: -1px;
-  margin-bottom: -20px;
-}
-.rating-year-container{
-  color: aliceblue;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.star{
-  width: 6%;
-}
-.bullet{
-  font-size: 35px;
-}
-
-.movie-descritpion-container{
-  color: rgb(255, 255, 255);
-  line-height: 1.4;
-  font-size: 17px;
-  margin-top: -40px;
-}
-.buttons-container{
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-.watch-button{
-  display: flex;
-  background-color: red;
-  border: none;
-  padding: 10px;
-  color: white;
-  align-items: center;
-  gap: 10px;
-  font-size: 17px;
-  font-weight: 500;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.watch-button:hover{
-  transform : scale(1.05)
-}
-.more-info-button {
-  color: white; 
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark background */
-  border: none; 
-  border-radius: 10px; 
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  backdrop-filter: blur(5px); 
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-.more-info-button:hover {
-  transform: scale(1.05);
-  background-color: rgba(0, 0, 0, 0.7); /* darker on hover */
-}
-.play-icon{
- width: 22px;
-}
-
-@media (max-width: 1024px) {
-  h2 {
-    font-size: 50px;
-  }
-
-  .home-section-movie-info-container {
-    width: 350px;
-    top: 28%;
-  }
-
-  .movie-descritpion-container {
-    font-size: 15px;
-  }
-}
-@media (max-width: 800px) {
-  .movie-container {
-    height: 85vh;
-    padding: 0 15px;
-  }
-
-  h2 {
-    font-size: 40px;
-  }
-
-  .home-section-movie-info-container {
-    width: 300px;
-    top: 25%;
-  }
-
-  .featured-movie-span {
-    font-size: 16px;
-    padding: 4px 10px;
-  }
-
-  .movie-descritpion-container {
-    font-size: 14px;
-  }
-
-  .star {
-    width: 10%;
-  }
-}
-@media (max-width: 600px) {
-  .movie-container {
-    height: 75vh;
-  }
-
   h2 {
     font-size: 30px;
   }
 
-  .home-section-movie-info-container {
-    width: 90%;
-    left: 5%;
-    top: 20%;
-  }
-
-  .buttons-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .watch-button,
-  .more-info-button {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .movie-descritpion-container {
-    font-size: 13px;
-    margin-top: -20px;
-  }
-}
-@media (max-width: 400px) {
-  h2 {
-    font-size: 24px;
-  }
-
   .featured-movie-span {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .movie-descritpion-container {
-    font-size: 12px;
+    font-size: 14px;
+    color: rgb(87, 56, 56);
   }
 
   .rating-year-container {
     gap: 8px;
     font-size: 12px;
+    color: rgb(0, 0, 0);
   }
 
   .bullet {
-    font-size: 20px;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
   }
 }
-@media(max-height:700px){
-  .home-section-movie-info-container{
-  position: absolute;
-  top: 40%;
-  left: 5%;
-  width: 400px;
+
+/* SHORT SCREENS */
+@media (max-height: 700px) {
+  .home-section-movie-info-container {
+    top: 35%;
   }
 }

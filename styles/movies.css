@@ -30,8 +30,50 @@ color: rgb(179, 182, 235)
 color: rgb(179, 182, 235)
 }
 
-.movie-search-container{
+.empty-state{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 30px;
+  color: rgb(179, 182, 235);
+  padding: 30px;
+  border-radius: 10px;
+}
+.movie-card{
+  width: 100%;
+  padding:10px;
+  border-radius: 10px;
+}.movie-card:hover{
+  border: 1px red solid;
+  transform: scale(1.05);
+  transition: transform 0.3s, border 0.3s;
+}
+.movie-image{
+  width: 100%;
+}
+
+@media(max-width: 1216px){
+  .empty-state{
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media(max-width: 1106px){
+  .empty-state{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media(max-width: 996px){
+  .empty-state{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media(max-width: 886px){
+  .empty-state{
+  grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media(max-width: 776px){
+  .empty-state{
+  grid-template-columns: 1fr 1fr;
+  }
 }
