@@ -21,14 +21,13 @@ hamburger.addEventListener('click', (e) => {
   }
 });
 
-// Close when clicking outside
-/**body.addEventListener('click', (event) => {
-  if (!navBar.contains(event.target) && !hamburger.contains(event.target)) {
-    navBar.style.display = 'none';
-  }
-});**/
 
 // Reset inline styles on resize
 window.addEventListener('resize', () => {
-  navBar.removeAttribute('style'); // 🔥 same fix as portfolio
+  navBar.removeAttribute('style'); 
 });
+
+document.querySelector('.js-my-list')
+  .addEventListener('click', () => {
+    window.open('my-list.html', '_blank', 'noopener,noreferrer');
+  });

@@ -6,7 +6,7 @@
   padding: 50px;
 }
 .search-input {
-  min-width: 300px;
+  min-width: 100px;
   max-width: 500px;
   flex: 1;
   padding: 17px;

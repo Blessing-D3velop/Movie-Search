@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My List</title>
+    <link rel="stylesheet" href="styles/my-list-styles/my-list-header.css">
+    <link rel="stylesheet" href="styles/my-list-styles/my-list-main.css">
+    <link rel="stylesheet" href="styles/footer.css">
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts: Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="top-section">
+          <p class="back-to-home js-back-to-home"><img src="Images & Icons/icons/my list icons/icons8-left-arrow-24.png" alt="left arrow icon" class="back-icon">Back</p>
+          <h1>My List</h1>
+          <div class="share-clear-container">
+            <p class="share-label">
+              <img src="Images & Icons/icons/my list icons/icons8-share-24.png" alt="share icon" class="share-icon">
+              Share
+            </p>
+            <button class="clear-button js-clear-button">
+              <img src="Images & Icons/icons/my list icons/icons8-delete-24.png" alt="delete icon" class="delete-icon">
+              <p>Clear All</p>
+              
+            </button>
+          </div>
+        </div>
+        <div class="middles-section">
+          <input type="text" placeholder="Search list..." class="search-input js-search-input">
+          <select>
+            <option value="title">Title(A-Z)</option>
+            <option value="year">Year (Newest)</option>
+          </select>
+        </div>
+        <div class="bottom-section">
+          <img src="Images & Icons/icons/my list icons/icons8-funnel-48.png" alt="funnel icon" class="funnel-icon">
+          <span class="number-of-movies js-number-of-movies">6 movies</span>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="moive-card-container js-moive-card-container">
+        <!-- Movie cards will be dynamically inserted here -->
+      </div>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">© 2026 Junior Search</div>
+        <div class="Privacy-container">
+          <p>Privacy Policy</p>
+          <p>Terms of Service</p>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="scripts/my-list.js"></script>
+  </body>
+</html>

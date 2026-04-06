@@ -1,0 +1,166 @@
+body{
+  background-color: rgb(15, 13, 22);
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+.header-container{
+  display: flex;
+  flex-direction: column;
+  padding:20px 30px;
+  color: white;
+  gap: 30px;
+}
+.top-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+.back-to-home,
+.share-label,
+.number-of-movies{
+  color: rgb(173, 163, 187);
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.back-to-home:hover,
+.share-label:hover{
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  cursor: pointer;
+}
+.back-icon{
+  width: 20px;
+}
+.share-icon{
+  width:18px;
+}
+
+h1{
+  font-size: 37px;
+}
+.share-clear-container,
+.back-to-home,
+.share-label{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.clear-button{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  background-color: red;
+  border: none;
+  padding: 0 15px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}.delete-icon{
+  width: 20px;
+}
+
+.clear-button:hover{
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px 12px rgba(0,0,0,0.35);
+}
+
+
+.middles-section{
+  display: flex;
+  gap: 15px;
+  margin-top: -40px;
+  padding: 20px 0;
+  align-items: center;
+}
+
+/* Search input */
+.search-input{
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+/* Placeholder color */
+.search-input::placeholder{
+  color: rgb(173, 163, 187);
+}
+
+/* Focus effect */
+.search-input:focus{
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+}
+
+/* Dropdown */
+select{
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover + focus */
+select:hover,
+select:focus{
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Dropdown options (important for visibility) */
+select option{
+  background-color: #0b0f1a;
+  color: white;
+  margin-right: 10px;
+}
+
+.bottom-section{
+  display: flex;
+  align-items: center;
+  margin-top: -45px;
+}
+.funnel-icon{
+  width: 20px;
+}
+
+
+@media(max-width: 635px){
+  .middles-section{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .clear-button p{
+    display: none;
+  }
+  .clear-button{
+    padding: 10px;
+  }
+  .share-label{
+    display: none;
+  }
+}
+@media(max-width: 325px){
+  h1{
+    font-size: 20px;
+  }
+  .back-icon{
+    display: none;
+  }
+}

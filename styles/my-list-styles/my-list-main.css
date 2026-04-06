@@ -1,36 +1,16 @@
-.movie-search-container{
+.moive-card-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  padding: 10px 30px;
+}
+.movie-card{
   display: flex;
   flex-direction: column;
-  text-align: center;
-  padding: 30px;
-  color: white;
-}
-
-.movie-icon-two{
-  width: 120px;
-}
-
-.discover-text{
-  font-weight: 500;
-  font-size: 30px;
-}
-.search-label{
-  display: flex;
   align-items: center;
   gap: 10px;
-  justify-content: center;
-  color: rgb(179, 182, 235);
 }
 
-.text{
-color: rgb(179, 182, 235)
-}
-
-.no-movie-text{
-color: rgb(179, 182, 235)
-}
-
-.empty-state{
+.moive-card-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 30px;
@@ -43,6 +23,7 @@ color: rgb(179, 182, 235)
   padding:10px;
   border-radius: 10px;
   position: relative;
+  cursor: pointer;
 }.movie-card:hover{
   border: 1px red solid;
   transform: scale(1.05);
@@ -53,38 +34,28 @@ color: rgb(179, 182, 235)
 }
 
 @media(max-width: 1216px){
-  .empty-state{
+  .moive-card-container{
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 @media(max-width: 1106px){
-  .empty-state{
+  .moive-card-container{
   grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 @media(max-width: 996px){
-  .empty-state{
+  .moive-card-container{
   grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 @media(max-width: 886px){
-  .empty-state{
+  .moive-card-container{
   grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media(max-width: 776px){
-  .empty-state{
+  .moive-card-container{
   grid-template-columns: 1fr 1fr;
   }
-}
-
-
-.add-watchlist-button{
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  position: absolute;
-  top: 15px;
-  right: 15px;
 }
