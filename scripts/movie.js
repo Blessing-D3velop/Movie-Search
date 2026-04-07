@@ -44,12 +44,12 @@ async function fetchMovie(){
       removeIcon.style.display = 'none';
 
       addWatchlistButton.addEventListener('click', () => {
-        // toggle icons
+
         if (addIcon.style.display !== 'none') {
           addIcon.style.display = 'none';
           removeIcon.style.display = 'inline';
 
-          // add the movie to the cart if not already there
+          //add the movie to the cart if not already there
           const exists = movieCart.some(m => m.imdbID === movie.imdbID);
           if (!exists) {
             movieCart.push({
@@ -71,14 +71,10 @@ async function fetchMovie(){
             movieCart.splice(index, 1);
           }
         }
-
-        console.log(movieCart);
       });
 
       emptyState.appendChild(movieCard);
     });
-
-    console.log(data);
 
   } catch (error) {
     console.error(error);

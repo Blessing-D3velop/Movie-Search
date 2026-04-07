@@ -48,3 +48,9 @@ document.querySelector('.js-my-list')
     window.location.href = 'my-list.html';
 });
 
+document.querySelector('.js-home')  .addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
+document.querySelector('.js-movies')  .addEventListener('click', () => {
+    window.location.href = 'movies.html';
+});
