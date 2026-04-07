@@ -7,6 +7,10 @@
   height: auto;
   gap: 0;
   flex-wrap: nowrap;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .Privacy-container{
   display: flex;
