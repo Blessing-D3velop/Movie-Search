@@ -136,7 +136,10 @@ sortSelect.addEventListener('change', (event) => {
 
 // Navigation
 backToHome.addEventListener('click', () => window.location.href = 'index.html');
-document.querySelector('.js-my-list-label')?.addEventListener('click', () => window.location.href = 'my-list.html');
+document.querySelector('.js-my-list-label')
+.addEventListener('click', () => window.location.href = 'my-list.html');
+document.querySelector('.js-series-label')
+.addEventListener('click', () => window.location.href = 'series.html');
 
 // Clear watchlist
 clearButton.addEventListener('click', () => {

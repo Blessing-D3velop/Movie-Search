@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My List</title>
+    <title>Series</title>
     <link rel="stylesheet" href="styles/my-list-styles/my-list-header.css">
-    <link rel="stylesheet" href="styles/my-list-styles/my-list-main.css">
+    <link rel="stylesheet" href="styles/series-page.main.css">
     <link rel="stylesheet" href="styles/footer.css">
   
     <meta charset="UTF-8">
@@ -19,20 +19,16 @@
     <header>
       <div class="header-container">
         <div class="top-section">
-          <p class="back-to-home js-back-to-home"><img src="Images & Icons/icons/my list icons/icons8-left-arrow-24.png" alt="left arrow icon" class="back-icon">Home</p>
-          <h1>My List</h1>
+          <p class="back-to-home js-back-to-home"><img src="Images & Icons/icons/my list icons/icons8-left-arrow-24.png" alt="left arrow icon" class="back-icon">Back</p>
+          <h1>Series</h1>
           <div class="share-clear-container">
             <p class="share-label js-movies-label">
               Movies
             </p>
-            <p class="share-label js-series-label">
-              Series
+            <p class="share-label js-my-list-label">
+              My List
+              <img src="Images & Icons/icons/icons8-right-arrow-24.png" alt="share icon" class="share-icon">
             </p>
-            <button class="clear-button js-clear-button">
-              <img src="Images & Icons/icons/my list icons/icons8-delete-24.png" alt="delete icon" class="delete-icon">
-              <p>Clear All</p>
-              
-            </button>
           </div>
         </div>
         <div class="middles-section">
@@ -44,14 +40,11 @@
         <option value="Year(Oldest)">Year (Oldest)</option>
       </select>
         </div>
-        <div class="bottom-section">
-          <img src="Images & Icons/icons/my list icons/icons8-funnel-48.png" alt="funnel icon" class="funnel-icon">
-          <span class="number-of-movies js-number-of-movies"></span>
-        </div>
+
       </div>
     </header>
     <main>
-      <div class="moive-card-container js-moive-card-container">
+      <div class="series-card-container js-series-card-container">
         <!-- Movie cards will be dynamically inserted here -->
       </div>
     </main>
@@ -64,6 +57,6 @@
         </div>
       </div>
     </footer>
-    <script type="module" src="scripts/my-list.js"></script>
+    <script type="module" src="scripts/series.js"></script>
   </body>
 </html>

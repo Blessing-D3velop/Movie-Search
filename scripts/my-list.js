@@ -1,8 +1,29 @@
 import { movieCart } from './fav-movie-cart.js';
 
-//functio to render movies in the list
+const movieContainer = document.querySelector('.js-moive-card-container');
+const numMovies = document.querySelector('.js-number-of-movies');
+const searchElement = document.querySelector('.js-search-input');
+const headerDeleteButton = document.querySelector('.js-clear-button');
+const sortSelect = document.querySelector('.js-select');
+
+// Helper: save cart to localStorage and update count
+const updateCartUI = () => {
+  localStorage.setItem('movieCart', JSON.stringify(movieCart));
+  if (movieCart.length === 0) {
+    numMovies.textContent = 'No movies in your list';
+  } else {
+    numMovies.textContent = `You have ${movieCart.length} movie${movieCart.length > 1 ? 's' : ''} in your list`;
+  }
+};
+
+// Render movies
 const renderMovies = (movies) => {
   movieContainer.innerHTML = '';
+
+  if (!movies.length) {
+    movieContainer.innerHTML = `<p class="no-movie-text">No movies found</p>`;
+    return;
+  }
 
   movies.forEach(movie => {
     movieContainer.innerHTML += `
@@ -12,103 +33,71 @@ const renderMovies = (movies) => {
         <p class="movie-year">${movie.Year}</p>
         <div class="movie-button-container">
           <button class="delete-button js-delete-button" data-imdbid="${movie.imdbID}">
-            <img src="Images & Icons/icons/my list icons/icons8-delete-24.png"  >
+            <img src="Images & Icons/icons/my list icons/icons8-delete-24.png">
             Delete
           </button>
         </div>        
       </div>
-
     `;
+  });
 
-    document.querySelectorAll('.js-delete-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const imdbID = button.getAttribute('data-imdbid');
-        const index = movieCart.findIndex(m => m.imdbID === imdbID);
-        if(index !== -1) {
-          movieCart.splice(index, 1);
-          renderMovies(movieCart);
-        }
-      });
+  // Attach delete listeners
+  document.querySelectorAll('.js-delete-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const imdbID = button.getAttribute('data-imdbid');
+      const index = movieCart.findIndex(m => m.imdbID === imdbID);
+      if (index !== -1) {
+        movieCart.splice(index, 1);
+        updateCartUI();       // Save and update count
+        renderMovies(movieCart); // Re-render
+      }
     });
   });
 };
 
-const movieContainer = document.querySelector('.js-moive-card-container');
+// Initial render
+if (movieContainer) renderMovies(movieCart);
+updateCartUI();
 
-//display movies in the list dynamically
-if (movieContainer) {
-  renderMovies(movieCart);
-}
-
-//count number of movies in the list and display it
-const numMovies = document.querySelector('.js-number-of-movies');
-if(movieCart.length === 0) {
-  numMovies.textContent = 'No movies in your list';
-}else{
-  numMovies.textContent = `You have ${movieCart.length} movies in your list`;
-}
-
-//filter for movies
-const searchElement = document.querySelector('.js-search-input');
-
-searchElement.addEventListener('input', () => {
+// Search filter
+searchElement?.addEventListener('input', () => {
   const searchInput = searchElement.value.toLowerCase();
-
-  let filteredMovies = movieCart.filter(movie => {
-    return movie.Title.toLowerCase().includes(searchInput);
-  });
-
+  const filteredMovies = movieCart.filter(movie => movie.Title.toLowerCase().includes(searchInput));
   renderMovies(filteredMovies);
 });
 
-//delete movies from the list
-const headerDeleteButton = document.querySelector('.js-clear-button');
-headerDeleteButton.addEventListener('click', () =>{
-
-  localStorage.removeItem('movieCart');
+// Clear all movies
+headerDeleteButton?.addEventListener('click', () => {
   movieCart.splice(0, movieCart.length);
+  updateCartUI();
   renderMovies(movieCart);
-  numMovies.textContent = 'No movies in your list';
 });
 
-//back to home button
-document.querySelector('.js-back-to-home').addEventListener('click', () => {
+// Back to home
+document.querySelector('.js-back-to-home')?.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
 
+// Sort movies
+sortSelect?.addEventListener('change', (event) => {
+  const type = event.target.value;
+  if (!type) return;
 
-
-
-//sort movies
-const sortSelect = document.querySelector('.js-select');
-
-const sortMovies = (type) =>{
-
-  if(!type) {
-    return;
-  }
-
-  movieCart.sort((a,b) =>{
-    if(type === 'Title(A-Z)') {
-      return a.Title.localeCompare(b.Title);
-
-    } else if(type === 'Year(Newest)') {
-      return b.Year.localeCompare(a.Year); 
-
-    } else if(type === 'Year(Oldest)') {
-      return a.Year.localeCompare(b.Year); 
-    }
+  movieCart.sort((a,b) => {
+    if(type === 'Title(A-Z)') return a.Title.localeCompare(b.Title);
+    if(type === 'Year(Newest)') return b.Year.localeCompare(a.Year);
+    if(type === 'Year(Oldest)') return a.Year.localeCompare(b.Year);
   });
-};
 
-
-sortSelect.addEventListener('change', (event) =>{
-  const selectedOption = event.target.value;
-  sortMovies(selectedOption);
   renderMovies(movieCart);
+  updateCartUI(); // Keep count & storage updated
 });
 
-document.querySelector('.js-movies-label')
-  .addEventListener('click', () => {
-    window.location.href = 'movies.html';
+// Navigate to movies page
+document.querySelector('.js-movies-label').addEventListener('click', () => {
+  window.location.href = 'movies.html';
+});
+
+document.querySelector('.js-series-label').addEventListener('click', () => {
+  window.location.href = 'series.html';
 });

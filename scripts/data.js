@@ -1,4 +1,4 @@
-export const queries = [
+ export const queries = [
   'batman',
   'avengers',
   'spider-man',
@@ -29,4 +29,23 @@ export const queries = [
   'avatar',
   'the dark knight',
   'shrek'
+];
+
+
+export const seriesQueries = [
+  'breaking bad',
+  'game of thrones',
+  'stranger things',
+  'the witcher',
+  'money heist',
+  'the boys',
+  'wednesday',
+  'peaky blinders',
+  'dark',
+  'loki',
+  'the walking dead',
+  'euphoria',
+  'vikings',
+  'lucifer',
+  'narcos'
 ];

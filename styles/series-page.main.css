@@ -1,6 +1,5 @@
-
-/* Grid container */
-.moive-card-container {
+/* Grid container for series */
+.series-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
@@ -10,43 +9,44 @@
   box-sizing: border-box;
 }
 
-/* Individual movie card */
-.movie-card {
+/* Individual series card */
+.series-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
   gap: 10px;
-  background-color: #1a1a2e; /* optional background */
+  background-color: #1a1a2e; /* background for card */
   padding: 10px;
   box-sizing: border-box;
+  position: relative; /* for watchlist button */
   transition: transform 0.3s, border 0.3s;
 }
 
 /* Hover effect */
-.movie-card:hover {
+.series-card:hover {
   border: 1px solid red;
   transform: scale(1.05);
 }
 
-/* Movie image */
-.movie-image {
+/* Series image */
+.series-image {
   width: 100%;
-  height: 250px; /* fixed height for all images */
-  object-fit: cover; /* maintain aspect ratio, crop if necessary */
+  height: 250px;
+  object-fit: cover;
   border-radius: 10px;
 }
 
-/* Movie title */
-.movie-title {
+/* Series title */
+.series-title {
   font-size: 18px;
   font-weight: 700;
   text-align: center;
 }
 
-/* Movie year */
-.movie-year {
+/* Series year */
+.series-year {
   font-size: 14px;
   color: rgb(180, 180, 180);
 }
@@ -59,9 +59,9 @@
   cursor: pointer;
 }
 
-/* Responsive tweaks (optional) */
+/* Responsive tweaks */
 @media (max-width: 776px) {
-  .moive-card-container {
+  .series-card-container {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 15px;
     padding: 15px;
@@ -69,9 +69,17 @@
 }
 
 @media (max-width: 500px) {
-  .moive-card-container {
+  .series-card-container {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
     padding: 10px;
   }
+}
+
+/* No series found message */
+.no-serie-text {
+  text-align: center;
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 50px;
 }

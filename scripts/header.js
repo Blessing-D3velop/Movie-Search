@@ -54,3 +54,7 @@ document.querySelector('.js-home')  .addEventListener('click', () => {
 document.querySelector('.js-movies')  .addEventListener('click', () => {
     window.location.href = 'movies.html';
 });
+
+document.querySelector('.js-tv-shows')  .addEventListener('click', () => {
+    window.location.href = 'series.html';
+});
