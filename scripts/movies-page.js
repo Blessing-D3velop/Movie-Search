@@ -8,17 +8,30 @@ const numMovies = document.querySelector('.js-number-of-movies');
 const backToHome = document.querySelector('.js-back-to-home');
 const clearButton = document.querySelector('.js-clear-button');
 
-let allMovies = []; // holds all fetched movies
+let allMovies = [];
 
-// Update watchlist count
+// Show watchlist count
 const updateWatchlistCount = () => {
+  if (!numMovies) return;
   numMovies.textContent = movieCart.length
     ? `You have ${movieCart.length} movie${movieCart.length > 1 ? 's' : ''} in your list`
     : 'No movies in your list';
 };
 
+// Show loading spinner
+const showLoading = () => {
+  if (!movieContainer) return;
+  movieContainer.innerHTML = `
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading movies...</p>
+    </div>
+  `;
+};
+
 // Render movies
 const renderMovies = (movies) => {
+  if (!movieContainer) return;
   movieContainer.innerHTML = '';
 
   if (!movies.length) {
@@ -45,31 +58,23 @@ const renderMovies = (movies) => {
     const removeIcon = movieCard.querySelector('.remove-watchlist-icon');
 
     // Show correct icon if already in watchlist
-    if (movieCart.some(m => m.imdbID === movie.imdbID)) {
-      addIcon.style.display = 'none';
-      removeIcon.style.display = 'inline';
-    } else {
-      removeIcon.style.display = 'none';
-    }
+    const inCart = movieCart.some(m => m.imdbID === movie.imdbID);
+    addIcon.style.display = inCart ? 'none' : 'inline';
+    removeIcon.style.display = inCart ? 'inline' : 'none';
 
     // Watchlist toggle
     addBtn.addEventListener('click', () => {
-      if (addIcon.style.display !== 'none') {
+      const index = movieCart.findIndex(m => m.imdbID === movie.imdbID);
+      if (index === -1) {
+        movieCart.push(movie);
         addIcon.style.display = 'none';
         removeIcon.style.display = 'inline';
-        if (!movieCart.some(m => m.imdbID === movie.imdbID)) {
-          movieCart.push(movie);
-          localStorage.setItem('movieCart', JSON.stringify(movieCart));
-        }
       } else {
+        movieCart.splice(index, 1);
         addIcon.style.display = 'inline';
         removeIcon.style.display = 'none';
-        const index = movieCart.findIndex(m => m.imdbID === movie.imdbID);
-        if (index !== -1) {
-          movieCart.splice(index, 1);
-          localStorage.setItem('movieCart', JSON.stringify(movieCart));
-        }
       }
+      localStorage.setItem('movieCart', JSON.stringify(movieCart));
       updateWatchlistCount();
     });
 
@@ -77,10 +82,10 @@ const renderMovies = (movies) => {
   });
 };
 
-// Fetch movies from multiple queries
+// Fetch movies from API
 const fetchMovies = async () => {
   allMovies = [];
-  movieContainer.innerHTML = '';
+  showLoading(); // show spinner while loading
 
   for (let query of queries) {
     try {
@@ -107,17 +112,15 @@ const fetchMovies = async () => {
   updateWatchlistCount();
 };
 
-fetchMovies();
-
-// Search filter
-searchElement.addEventListener('input', () => {
+// Search movies
+searchElement?.addEventListener('input', () => {
   const searchInput = searchElement.value.toLowerCase();
   const filtered = allMovies.filter(movie => movie.Title.toLowerCase().includes(searchInput));
   renderMovies(filtered);
 });
 
 // Sort movies
-sortSelect.addEventListener('change', (event) => {
+sortSelect?.addEventListener('change', (event) => {
   const type = event.target.value;
   if (!type) return;
 
@@ -135,16 +138,19 @@ sortSelect.addEventListener('change', (event) => {
 });
 
 // Navigation
-backToHome.addEventListener('click', () => window.location.href = 'index.html');
+backToHome?.addEventListener('click', () => window.location.href = 'index.html');
 document.querySelector('.js-my-list-label')
-.addEventListener('click', () => window.location.href = 'my-list.html');
+  .addEventListener('click', () => window.location.href = 'my-list.html');
 document.querySelector('.js-series-label')
-.addEventListener('click', () => window.location.href = 'series.html');
+  .addEventListener('click', () => window.location.href = 'series.html');
 
 // Clear watchlist
-clearButton.addEventListener('click', () => {
+clearButton?.addEventListener('click', () => {
   movieCart.splice(0, movieCart.length);
   localStorage.removeItem('movieCart');
   updateWatchlistCount();
   renderMovies(allMovies);
 });
+
+// Initial fetch
+fetchMovies();

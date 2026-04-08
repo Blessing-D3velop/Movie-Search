@@ -10,12 +10,23 @@ const clearButton = document.querySelector('.js-clear-button');
 
 let allSeries = [];
 
+// Create and show loading indicator
+const showLoading = () => {
+  if (!seriesContainer) return;
+  seriesContainer.innerHTML = `
+    <div class="loading-container">
+      <div class="loader"></div>
+      <p>Loading series...</p>
+    </div>
+  `;
+};
+
 // Save watchlist to localStorage
 const saveToLocalStorage = () => {
   localStorage.setItem('movieCart', JSON.stringify(movieCart));
-}
+};
 
-// Update watchlist count safely
+// Update watchlist count
 const updateWatchlistCount = () => {
   if (!numMovies) return;
   numMovies.textContent = movieCart.length
@@ -61,7 +72,7 @@ const renderSeries = (seriesList) => {
       const index = movieCart.findIndex(s => s.imdbID === series.imdbID);
 
       if (index === -1) {
-        // Not in cart → add
+        // Add to cart
         const seriesItem = {
           imdbID: series.imdbID,
           Title: series.Title,
@@ -72,7 +83,7 @@ const renderSeries = (seriesList) => {
         addIcon.style.display = 'none';
         removeIcon.style.display = 'inline';
       } else {
-        // Already in cart → remove
+        // Remove from cart
         movieCart.splice(index, 1);
         addIcon.style.display = 'inline';
         removeIcon.style.display = 'none';
@@ -86,10 +97,10 @@ const renderSeries = (seriesList) => {
   });
 };
 
-// Fetch series from API
+// Fetch series from API with loading
 const fetchSeries = async () => {
   allSeries = [];
-  if (seriesContainer) seriesContainer.innerHTML = '';
+  showLoading(); // Show loading spinner
 
   for (let query of seriesQueries) {
     try {
@@ -129,7 +140,6 @@ sortSelect?.addEventListener('change', (event) => {
   if (!type) return;
 
   const arrayToSort = allSeries.filter(s => s.Title.toLowerCase().includes(searchElement?.value.toLowerCase() || ''));
-
   arrayToSort.sort((a, b) => {
     if (type === 'Title(A-Z)') return a.Title.localeCompare(b.Title);
     if (type === 'Year(Newest)') return b.Year.localeCompare(a.Year);
@@ -149,14 +159,8 @@ clearButton?.addEventListener('click', () => {
 
 // Navigation
 backToHome?.addEventListener('click', () => window.location.href = 'index.html');
-
-document.querySelector('.js-my-list-label')
-  .addEventListener('click', () =>
-     window.location.href = 'my-list.html');
-
-document.querySelector('.js-movies-label')
-  .addEventListener('click', () =>
-     window.location.href = 'movies.html');
+document.querySelector('.js-my-list-label')?.addEventListener('click', () => window.location.href = 'my-list.html');
+document.querySelector('.js-movies-label')?.addEventListener('click', () => window.location.href = 'movies.html');
 
 // Initial fetch
 fetchSeries();
