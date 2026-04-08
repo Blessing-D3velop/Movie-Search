@@ -75,13 +75,9 @@ Simply open index.html in any modern browser.
 
 3. Optional: Serve locally
 
-You can use VSCode Live Server or Python HTTP server:
+You can use VSCode Live Server:
 
-# Python 3
-python -m http.server
 
-Then open http://localhost:8000 in your browser.
-
-📄 License
+License
 
 This project is licensed under the MIT License.
